@@ -1,28 +1,28 @@
 import { createContext, useEffect, useState } from 'react';
-import { getProducts } from 'services/fetchProducts';
-import { Category } from 'services/ProductsApiResponse';
+import { getProducts } from '../services/fetchProducts';
+import { Category } from '../services/ProductsApiResponse';
 
-type ProductDataType = {
-  // Define la estructura de tus datos
-  id: string;
-  category: Category;
-  creationAt: string;
+export enum Sort {
+  Desc = 'desc',
+  Asc = 'asc',
+}
+
+export type ProductDataType = {
+  id: number;
+  category: string;
   description: string;
-  images: string[];
+  image: string;
   price: number;
   title: string;
-  updatedAt: string;
 };
 
-// Define el tipo de tu contexto
-type ProductContextType = {
+export type ProductContextType = {
   products: ProductDataType[];
   setProducts: React.Dispatch<React.SetStateAction<ProductDataType[]>>;
   handleFetch: () => Promise<void>;
 };
 
 const ProductsContext = createContext<ProductContextType | undefined>(undefined);
-// export const ProductsDispatchContext = createContext(null);
 
 const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState<ProductDataType[]>([]);
@@ -39,6 +39,7 @@ const ProductContextProvider = ({ children }) => {
       console.error('Error fetching products:', error);
     }
   };
+
   useEffect(() => {
     handleFetch();
   }, []);

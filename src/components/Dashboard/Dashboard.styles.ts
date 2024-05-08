@@ -31,3 +31,10 @@ export const DashboardCardContainerStyle = styled.div`
   }
 `;
 
+export const DashboardHeaderStyle = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; 
+`;
+

@@ -22,6 +22,9 @@
       "src/@types"
     ],
     "baseUrl": "./src",
+    "paths": {
+      "@/components/*": ["components/*"]
+    },
     "incremental": true
   },
   "include": [

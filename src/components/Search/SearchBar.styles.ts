@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const SearchContainer = styled.div`
   display: flex;
   margin: 16px;
-//   background-color: #0aa9a3;
+  flex: 1;
 `;
 
 export const SearchInput = styled.input`
